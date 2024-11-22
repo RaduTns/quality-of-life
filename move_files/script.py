@@ -15,7 +15,7 @@ folders = {
     "Powerpoint" : [".pptx", ".ppt"]
 }
 
-# Ensure destination folders exist
+# Make sure destination folders exist
 for folder in folders.keys():
     os.makedirs(os.path.join(destination_base, folder), exist_ok=True)
 
