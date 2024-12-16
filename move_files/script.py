@@ -18,7 +18,7 @@ folders = {
 # Create destination folders if they do not exist
 def create_folders():
     for folder in folders.keys():
-        os.makedirs(os.path.join(destination_base, folder), exist_ok=True)
+        os.makedirs(os.path.join(destination_base, folder), exist_ok = True)
 
 # Calculate the SHA-256 hash of a file
 def calculate_hash(file_path, chunk_size=8192):
@@ -28,7 +28,7 @@ def calculate_hash(file_path, chunk_size=8192):
             sha256.update(chunk)
     return sha256.hexdigest()
     
-#Check if the file already exists and either rename the old one or delete it
+# Check if the file already exists and either rename the old one or delete it
 def file_exists(destination_path, file_path):
     if os.path.exists(destination_path):
         source_hash = calculate_hash(file_path)
