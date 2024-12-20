@@ -27,6 +27,9 @@ def calculate_hash(file_path, chunk_size=8192):
         while chunk := f.read(chunk_size):
             sha256.update(chunk)
     return sha256.hexdigest()
+
+def check_free_space():
+    return True if shutil.disk_usage(downloads_folder) < shutil.disk_usage(destination_base) else False
     
 # Check if the file already exists and either rename the old one or delete it
 def file_exists(destination_path, file_path):
@@ -69,5 +72,7 @@ def process_files():
                 print(f"Skipped: {filename} (No matching extension)")
 
 if __name__ == "__main__":
-    create_folders()
-    process_files()
+    if check_free_space() is True:
+        create_folders()
+        process_files()
+
